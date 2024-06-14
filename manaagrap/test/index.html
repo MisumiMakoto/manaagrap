@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Management App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Manager App</h1>
+        <ul class="nav nav-tabs mb-4">
+            <li class="nav-item">
+                <a class="nav-link active" href="#employees" data-toggle="tab">Empleados</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#departments" data-toggle="tab">Departamentos</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="employees">
+                <!-- Employee management content will be loaded here -->
+            </div>
+            <div class="tab-pane" id="departments">
+                <!-- Department management content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Employee Modal -->
+    <div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="employeeModalLabel">Add/Edit Employee</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Employee form fields will go here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveEmployeeBtn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Department Modal -->
+    <div class="modal fade" id="departmentModal" tabindex="-1" role="dialog" aria-labelledby="departmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="departmentModalLabel">Add/Edit Department</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Department form fields will go here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveDepartmentBtn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Register Modal -->
+    <div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="authModalLabel">Login/Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="authForm">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="form-group" id="confirmPasswordGroup" style="display:none;">
+                            <label for="confirm_password">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                        </div>
+                        <button type="button" class="btn btn-primary" id="authBtn">Login</button>
+                        <button type="button" class="btn btn-secondary" id="switchAuthBtn">Switch to Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Toggle between login and register
+        document.getElementById('switchAuthBtn').addEventListener('click', function() {
+            var authBtn = document.getElementById('authBtn');
+            var confirmPasswordGroup = document.getElementById('confirmPasswordGroup');
+            if (authBtn.textContent === 'Login') {
+                authBtn.textContent = 'Register';
+                confirmPasswordGroup.style.display = 'block';
+            } else {
+                authBtn.textContent = 'Login';
+                confirmPasswordGroup.style.display = 'none';
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('authBtn').addEventListener('click', function() {
+            var authForm = document.getElementById('authForm');
+            var action = this.textContent.toLowerCase();
+            authForm.action = action + '.php';
+            authForm.method = 'POST';
+            authForm.submit();
+        });
+    </script>
+</body>
+</html>
