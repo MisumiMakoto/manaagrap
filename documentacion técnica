@@ -56,7 +56,7 @@ El sistema está compuesto por una aplicación web desarrollada en PHP que se co
 +--------------------+       +-----------------------+
 |                    |       |                       |
 |   Interfaz Web     | <---> |   Servidor PHP        |
-| (HTML/CSS/Bootstrap)|       | (Lógica de Negocio)   |
+|(HTML/CSS/Bootstrap)|       | (Lógica de Negocio)   |
 |                    |       |                       |
 +--------------------+       +-----------------------+
                                   |
